@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TodoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+// Todo関連のルーティング
+Route::controller(TodoController::class)->group(function () {
+    // Route::xxx('yyy', 'zzz');
+    // xxx: http request
+    // yyy: URL
+    // zzz: method name
+
+    // show todo
+    Route::get('/home', 'home');
+    // add todo
+
+    // delete todo
+
 });
