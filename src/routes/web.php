@@ -20,15 +20,16 @@ Route::get('/', function () {
 
 // Todo関連のルーティング
 Route::controller(TodoController::class)->group(function () {
-    // Route::xxx('yyy', 'zzz');
+    // Route::xxx('yyy', 'zzz')->('name');
     // xxx: http request
     // yyy: URL
     // zzz: method name
+    // name: routing name. You can use this name as URL in view,controller
 
     // show todo
-    Route::get('/home', 'home');
+    Route::get('/todo', 'home')->name('todo.home');
     // add todo
-
+    Route::post('/todo/add', 'add')->name('todo.add');
     // delete todo
 
 });
