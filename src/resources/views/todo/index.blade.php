@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>Laravel</title>
 
@@ -15,18 +16,69 @@
         </style>
 
         <style>
-            body {
-                font-family: 'Nunito', sans-serif;
+            * {
+                box-sizing: border-box;
+            }
+            .contents {
+                width:600px;
+                margin: 16px auto 0;
+                display: flex;
+                justify-content: space-between;
+            }
+            #formArea {
+                border: 1px solid;
+                width: 250px;
+                height: 200px;
+                padding: 16px;
+            }
+            #bucketArea {
+                border: 1px solid;
+                width: 200px;
+            }
+            #todoInput {
+                display: block;
+                margin-bottom: 8px;
+                border: 1px solid;
+                line-height: 1.5;
+            }
+            li {
+                list-style: none;
+                border: 1px solid;
+                margin: 8px 0;
+                padding: 8px;
+                line-height: 2.0;
+            }
+            ul {
+                padding: 0;
+                margin: 0 8px;
+                display: flex;
+                flex-direction: column-reverse;
             }
         </style>
     </head>
-    <body class="antialiased">
-        <form method="post">
-            @csrf
-            <div>
-                <input type="text" name="content" placeholder="TODOを入力する">
-                <button formaction="{{ route('todo.add') }}">submit</button>
-            </div>
-        </form>
+    <body class="contents">
+        <div id="formArea">
+            <form method="post" id="todoForm" action="{{ route('todo.add') }}">
+                @csrf
+                <input type="text" id="todoInput" name="content" placeholder="TODOを入力する">
+                <div>
+                    <button type="button" class="todoSubmit" value="1">Ⅰ</button>
+                    <button type="button" class="todoSubmit" value="2">Ⅱ</button>
+                    <button type="button" class="todoSubmit" value="3">Ⅲ</button>
+                    <button type="button" class="todoSubmit" value="4">Ⅳ</button>
+                </div>
+            </form>
+        </div>
+        <div id="bucketArea">
+            <ul>
+                @foreach($todos as $todo)
+                <li>
+                    <span>{{ $todo->content }}</span>
+                </li>
+                @endforeach
+            </お>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <script src="{{ asset('todo.js') }}"></script>
     </body>
 </html>

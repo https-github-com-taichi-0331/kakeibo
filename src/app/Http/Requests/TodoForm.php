@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Request;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -13,7 +13,7 @@ class TodoForm extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**

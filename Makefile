@@ -40,7 +40,7 @@ down:
 down-v:
 	docker compose down --remove-orphans --volumes
 restart:
-	@make down
+	@make stop
 	@make up
 destroy:
 	docker compose down --rmi all --volumes --remove-orphans
@@ -105,3 +105,6 @@ ide-helper:
 	docker compose exec app php artisan ide-helper:generate
 	docker compose exec app php artisan ide-helper:meta
 	docker compose exec app php artisan ide-helper:models --nowrite
+init-todo:
+	docker compose exec app php artisan make:model Todo -m
+	docker compose exec app php artisan make:seeder TodoTableSeeder
