@@ -94,7 +94,7 @@
                     <input type="hidden" class="hiddenImportance" value="{{ $todo->importance }}">
                 </li>
                 @endforeach
-            </お>
+            </ul>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
         <script src="{{ asset('todo.js') }}"></script>
