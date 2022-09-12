@@ -1,0 +1,70 @@
+* {
+    box-sizing: border-box;
+}
+.contents {
+    display: flex;
+    margin: 60px;
+}
+.formArea {
+    border: 1px solid;
+    width: 250px;
+    height: 200px;
+    padding: 40px 24px;
+}
+.bucketArea {
+    border: 1px solid;
+    width: 900px;
+    height: 900px;
+    overflow-y: scroll;
+    margin: 0 0 0 40px;
+}
+.todoInput {
+    display: block;
+    border: 1px solid;
+    line-height: 1.5;
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 8px;
+}
+button {
+    cursor: pointer;
+}
+.bucketList {
+    padding: 0;
+    margin: 0 8px;
+    display: flex;
+    flex-direction: column-reverse;
+    height: 100%;
+}
+.bucketItem {
+    list-style: none;
+    border: 3px solid;
+    margin: 8px 0;
+    padding: 8px;
+    line-height: 2;
+    display: flex;
+    justify-content: space-between;
+}
+
+.delete-btn {
+    display: none;
+}
+li:hover .delete-btn {
+    display: block;
+    cursor: pointer;
+}
+.todoSubmit {
+    color: #ffffff;
+}
+.todoSubmit:nth-child(1) {
+    background: blue;
+}
+.todoSubmit:nth-child(2) {
+    background: green;
+}
+.todoSubmit:nth-child(3) {
+    background: orange;
+}
+.todoSubmit:nth-child(4) {
+    background: pink;
+}
