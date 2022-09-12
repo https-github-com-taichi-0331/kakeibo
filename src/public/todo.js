@@ -1,3 +1,6 @@
+// 初期表示時、重要度によってtodoのサイズ変える
+formaTodoSize();
+
 // 非同期通信に必要なトークンの設定
 $.ajaxSetup({
   headers: {
@@ -58,20 +61,26 @@ function updateList(res) {
   });
   // バケツの中身を確認
   $('ul').html(list);
+  formaTodoSize();
 }
 
+// todoのサイズ変更
 function formaTodoSize() {
-  // $('ul').each(function(i, v) {
-  //   let target = v.find('.hiddenImportance').val();
-  //   switch(target) {
-  //     case '1':
-  //       break;
-  //     case '2':
-  //       break;
-  //       case '3':
-  //         break;
-  //         case '4':
-  //       break;
-  //   }
-  // });
+  $('li').each(function(i, v) {
+    let target = $(this).find('.hiddenImportance').val();
+    switch(target) {
+      case '1':
+        $(this).css({'line-height': '4.0'});
+        break;
+      case '2':
+        $(this).css({'line-height': '6.0'});
+        break;
+      case '3':
+        $(this).css({'line-height': '3.0'});
+        break;
+      case '4':
+        $(this).css({'line-height': '2.5'});
+        break;
+    }
+  });
 }
