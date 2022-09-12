@@ -33,7 +33,9 @@
             }
             #bucketArea {
                 border: 1px solid;
-                width: 200px;
+                width: 300px;
+                height: 600px;
+                overflow-y: scroll;
             }
             #todoInput {
                 display: block;
@@ -41,18 +43,31 @@
                 border: 1px solid;
                 line-height: 1.5;
             }
+            button {
+                cursor: pointer;
+            }
             li {
                 list-style: none;
                 border: 1px solid;
                 margin: 8px 0;
                 padding: 8px;
                 line-height: 2.0;
+                display: flex;
+                justify-content: space-between;
             }
             ul {
                 padding: 0;
                 margin: 0 8px;
                 display: flex;
                 flex-direction: column-reverse;
+                height: 100%;
+            }
+            .delete-btn {
+                display: none;
+            }
+            li:hover .delete-btn {
+                display: block;
+                cursor: pointer;
             }
         </style>
     </head>
@@ -69,11 +84,14 @@
                 </div>
             </form>
         </div>
-        <div id="bucketArea">
+        <div id="bucketArea" data-action="{{ route('todo.delete') }}">
             <ul>
                 @foreach($todos as $todo)
                 <li>
                     <span>{{ $todo->content }}</span>
+                    <span class="delete-btn">×</span>
+                    <input type="hidden" class="hiddenId" value="{{ $todo->id }}">
+                    <input type="hidden" class="hiddenImportance" value="{{ $todo->importance }}">
                 </li>
                 @endforeach
             </お>

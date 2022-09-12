@@ -31,5 +31,5 @@ Route::controller(TodoController::class)->group(function () {
     // add todo
     Route::post('/todo/add', 'add')->name('todo.add');
     // delete todo
-
+    Route::post('/todo/delete', 'delete')->name('todo.delete');
 });

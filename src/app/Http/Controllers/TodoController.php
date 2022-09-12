@@ -10,7 +10,7 @@ class TodoController extends Controller
 {
   // show todo
   public function home() {
-    $todos = DB::table('todos')->select('content', 'importance')->get();
+    $todos = DB::table('todos')->select('id', 'content', 'importance')->get();
 
     // resources/view配下のテンプレート名
     return view('todo.index', compact('todos'));
@@ -26,9 +26,19 @@ class TodoController extends Controller
     ]);
 
     // 画面返却用変数作成($request)
-    $todos = DB::table('todos')->select('content', 'importance')->get();
+    $todos = DB::table('todos')->select('id', 'content', 'importance')->get();
 
     return response()->json($todos);
     // return redirect()->route('todo.home');
   }
+
+  // delete todo
+  public function delete(Request $request) {
+    DB::table('todos')->where('id', $request->id)->delete();
+
+    $todos = DB::table('todos')->select('id', 'content', 'importance')->get();
+
+    return response()->json($todos);
+  }
+
 }
