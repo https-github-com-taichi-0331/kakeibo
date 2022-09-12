@@ -49,7 +49,7 @@ function updateList(res) {
   // 更新するバケツの中身を変数に格納
   let list = '';
   $.each(res, function(i, v) {
-    list += '<li>';
+    list += '<li class="bucketItem">';
     list += '<span>' + v.content + '</span>';
     list += '<span class="delete-btn">×</span>';
     list += '<input type="hidden" class="hiddenId" value=' + v.id + '>';
