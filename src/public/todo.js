@@ -58,6 +58,7 @@ function updateList(res) {
   });
   // バケツの中身を確認
   $('ul').html(list);
+  
 }
 
 function formaTodoSize() {
